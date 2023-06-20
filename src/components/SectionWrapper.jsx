@@ -1,9 +1,68 @@
-import React from 'react'
+import React from "react";
+import styles from "../styles/Global";
+import assets from "../assets";
+import Button from "./Button";
 
-const SectionWrapper = () => {
+const SectionWrapper = ({
+  title,
+  description,
+  showBtn,
+  mockUpImg,
+  banner,
+  reverse,
+}) => {
   return (
-    <div>SectionWrapper</div>
-  )
-}
+    <div
+      className={`min-h-screen ${styles.section} 
+      ${reverse ? styles.bgWhite : styles.bgPrimary} ${banner}`}
+    >
+      <div
+        className={`flex items-center 
+        ${reverse ? styles.boxReverseClass : styles.boxClass} 
+        w-11/12 sm:w-full minmd:3/4`}
+      >
+        <div
+          className={`${styles.descDiv}
+        ${reverse ? "fadeRightMini" : "fadeLeftMini"}
+        ${reverse ? styles.textRight : styles.textLeft}
+        `}
+        >
+          <h1
+            className={`
+          ${reverse ? styles.black : styles.whiteText}
+          ${styles.h1Text}
+          `}
+          >
+            {title}
+          </h1>
+          <p
+            className={`
+          ${styles.descriptionText}
+          ${reverse ? styles.black : styles.whiteText}
+          `}
+          >
+            {description}
+          </p>
+          {showBtn && (
+            <Button
+              assetUrl={assets.expo}
+              link="deployed nft marketplace react native application"
+            />
+          )}
+        </div>
+        <div className={`flex-1 ${styles.flexCenter} p-8 sm:px-0`}>
+          <img
+            src={mockUpImg}
+            alt="mockup"
+            className={`
+                  ${reverse ? "fadeLeftMini" : "fadeRightMini"}
 
-export default SectionWrapper
+                  ${styles.sectionImg}`}
+          />
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default SectionWrapper;
